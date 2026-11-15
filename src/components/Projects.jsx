@@ -12,7 +12,7 @@ export default function Projects({ eyebrow, title, projects }) {
     <div className="projects-grid">{shown.map((project) => <article className="project-card" key={project.number}>
       <div className="project-number">{project.number}</div><h3>{project.name}</h3><p>{project.description}</p>
       <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-      {project.link && <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">Visit Website ↗</a>}
+      {project.link && <a href={project.link} target={project.link.startsWith('#') ? undefined : '_blank'} rel={project.link.startsWith('#') ? undefined : 'noopener noreferrer'} className="project-link">{project.link.startsWith('#') ? 'Explore API Dashboard ↓' : 'Visit Website ↗'}</a>}
     </article>)}</div>
   </section>;
 }
